@@ -10,7 +10,7 @@ TEMINET is a novel multi-omics integration approach designed to enhance diagnost
 - sklearn
 - numpy
 
-# Usage
+## Usage
 The data used can be obtained through https://github.com/txWang/MOGONET.
 In our study, data from three omics were merged into one file "data.pt". 
 You can get the classification result by running model_test.py.
