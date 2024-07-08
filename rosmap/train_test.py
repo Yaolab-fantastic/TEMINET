@@ -8,7 +8,7 @@ import random
 import pickle
 import copy
 import torch
-from my_model_GAT import *
+from model_GAT import *
 # Env
 from utils import *
 # DATA
@@ -133,7 +133,7 @@ for epoch in range(0, num_epochs):
         best_epoch = epoch + 1
         best_model_wts = copy.deepcopy(network.state_dict())
 
-        save_path = f'./model.pth'
+        save_path = f'./model-rosmap.pth'
         state = {
             'net': best_model_wts,
             'epoch': best_epoch - 1,
@@ -145,22 +145,22 @@ print('num of epoch: {0}'.format(epoch))
 print('Best val Acc: {:.4f} Best epoch {:04d}'.format(best_acc, best_epoch-1))
 print('end')
 
-plt.switch_backend('agg')
-plt.figure(figsize=(30,15))
-plt.subplot(1,2,1)
-plt.plot(train_loss_all,"ro-",label = "Train loss")
-plt.plot(test_loss_all,"bs-",label = "Test loss")
-plt.legend()
-plt.xlabel("epoch")
-plt.ylabel("Loss")
-plt.title('Best test epoch: {0}'.format(best_epoch-1))
-plt.subplot(1,2,2)
-plt.plot(train_acc_all,"ro-",label = "Train acc")
-plt.plot(test_acc_all,"bs-",label = "Test acc")
-plt.xlabel("epoch")
-plt.ylabel("acc")
-plt.title('Best test Acc: {0}'.format(best_acc))
-plt.legend()
-plt.savefig("./total.png")
-#plt.show()
+# plt.switch_backend('agg')
+# plt.figure(figsize=(30,15))
+# plt.subplot(1,2,1)
+# plt.plot(train_loss_all,"ro-",label = "Train loss")
+# plt.plot(test_loss_all,"bs-",label = "Test loss")
+# plt.legend()
+# plt.xlabel("epoch")
+# plt.ylabel("Loss")
+# plt.title('Best test epoch: {0}'.format(best_epoch-1))
+# plt.subplot(1,2,2)
+# plt.plot(train_acc_all,"ro-",label = "Train acc")
+# plt.plot(test_acc_all,"bs-",label = "Test acc")
+# plt.xlabel("epoch")
+# plt.ylabel("acc")
+# plt.title('Best test Acc: {0}'.format(best_acc))
+# plt.legend()
+# plt.savefig("./total.png")
+# plt.show()
 

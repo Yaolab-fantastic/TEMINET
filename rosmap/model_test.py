@@ -9,7 +9,7 @@ import pickle
 import copy
 import torch
 import sklearn.metrics
-from my_model_GAT import *
+from model_GAT import *
 
 # Env
 from utils import *
@@ -77,14 +77,13 @@ with torch.no_grad():
     real_label_y = label_y[1:]
     zhibiao_loss = test_loss / test_num
     zhibiao_acc = test_corrects.double().item() / test_num
-    print('Test Loss : {:.8f} Test ACC : {:.8f}'.format(zhibiao_loss, zhibiao_acc))
     sk_acc = sklearn.metrics.accuracy_score(real_label_y, real_pred_y)
     sk_f1score = sklearn.metrics.f1_score(real_label_y, real_pred_y)
     real_pred_y_softmax = torch.softmax(real_output_y, dim=1).numpy()[:, 1]
     fpr, tpr, thresholds = sklearn.metrics.roc_curve(real_label_y, real_pred_y_softmax, pos_label=1)
     sk_auc = sklearn.metrics.auc(fpr, tpr)
-    print('sk acc : {:.8f}'.format(sk_acc))
-    print('sk f1 : {:.8f}'.format(sk_f1score))
-    print('sk auc : {:.8f}'.format(sk_auc))
+    print('acc : {:.8f}'.format(sk_acc))
+    print('f1 : {:.8f}'.format(sk_f1score))
+    print('auc : {:.8f}'.format(sk_auc))
     print('end')
 
